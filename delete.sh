@@ -7,11 +7,16 @@ N="\e[0m"
 
 if [-d $source_dir]
 then
-    echo "$source_dir directory  $G exists $N"
+    echo -e "$source_dir directory  $G exists $N"
 else
-    echo "$source_dir doesnt $R exists $N"
+    echo -e "$source_dir doesnt $R exists $N"
     exit 1
 fi
 
 Files= $(find $source_dir -name "*.log" -mtime +14)
 echo "$files"
+
+while IFS = read  -r line 
+do 
+  echo "deleting line:$line"
+done <<< $files
